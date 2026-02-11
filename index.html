@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bebaduuu ❤️</title>
+<title>My Bebaduuu ❤️</title>
 
 <style>
 body {
@@ -15,38 +15,47 @@ body {
     overflow-x:hidden;
 }
 
+/* Card */
 .card {
     background: rgba(255,255,255,0.15);
-    margin:20px;
-    padding:25px;
+    margin:16px;
+    padding:22px;
     border-radius:20px;
     backdrop-filter: blur(12px);
     box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    max-width:720px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
-h1 { font-size:2em; margin-bottom:10px; }
-h2 { font-size:1.4em; }
+h1 { font-size:2em; margin-bottom:8px; }
+h2 { font-size:1.3em; }
 
-.message {
-    white-space:pre-line;
-    line-height:1.6em;
-    font-size:1em;
-}
-
+/* Portrait-friendly gallery */
 .gallery {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap:10px;
-    margin-top:15px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:18px;
 }
 
 .gallery img {
     width:100%;
-    border-radius:15px;
-    object-fit:cover;
-    height:180px;
+    height:auto;
+    border-radius:16px;
+    object-fit:contain;
+    background:#00000022;
 }
 
+/* Message */
+.message {
+    white-space:pre-line;
+    line-height:1.65em;
+    font-size:1em;
+    margin-top:18px;
+}
+
+/* Buttons */
 button {
     padding:14px 22px;
     font-size:16px;
@@ -54,11 +63,17 @@ button {
     border-radius:30px;
     margin:10px;
     cursor:pointer;
+    transition:0.25s;
+}
+
+button:hover {
+    transform:scale(1.1);
 }
 
 #yesBtn { background:#ff2e63; color:white; }
 #noBtn { background:white; color:#ff2e63; position:relative; }
 
+/* Rose petals */
 .petal {
     position:fixed;
     top:-20px;
@@ -73,10 +88,10 @@ button {
     }
 }
 
-/* Mobile optimization */
-@media (max-width:600px) {
-    h1 { font-size:1.7em; }
-    .gallery img { height:140px; }
+/* Mobile tuning */
+@media (max-width:600px){
+    h1 { font-size:1.6em; }
+    .message { font-size:0.95em; }
 }
 </style>
 </head>
@@ -88,14 +103,13 @@ button {
 <h1>My Bebaduuu ❤️</h1>
 
 <div class="gallery">
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
-<img src="photo4.jpg">
+  <img src="photo1.jpg">
+  <img src="photo2.jpg">
+  <img src="photo3.jpg">
+  <img src="photo4.jpg">
 </div>
 
 <div class="message">
-
 I fall in love when you listen, when I have nothing to say.
 I fall in love when you dance over my head and then put my head back to sleep.
 
@@ -118,7 +132,6 @@ makes you smile,
 and keeps you calm even when everything changes.
 
 — Pumpkin 💛
-
 </div>
 
 <h2>Will you be my Valentine? 💌</h2>
@@ -129,14 +142,15 @@ and keeps you calm even when everything changes.
 </div>
 
 <script>
-/* YES button */
+/* YES click */
 function sayYes(){
 document.body.innerHTML = `
-<h1 style="margin-top:40vh">
-She said YES ❤️🌹<br>
-Forever my Bebaduuu — Love, Pumpkin
+<h1 style="margin-top:40vh;padding:20px">
+She said YES ❤️🌹<br><br>
+Forever my Bebaduuu<br>
+— Pumpkin 💛
 </h1>`;
-startPetals();
+startPetals(120);
 }
 
 /* Moving No button */
@@ -147,8 +161,8 @@ btn.style.left=Math.random()*80+"%";
 btn.style.top=Math.random()*80+"%";
 }
 
-/* Rose petal animation */
-function startPetals(){
+/* Rose petals */
+function startPetals(speed=350){
 setInterval(()=>{
 const petal=document.createElement("div");
 petal.className="petal";
@@ -157,11 +171,11 @@ petal.style.left=Math.random()*100+"vw";
 petal.style.animationDuration=(Math.random()*3+3)+"s";
 document.body.appendChild(petal);
 setTimeout(()=>petal.remove(),6000);
-},250);
+},speed);
 }
 
-/* Start petals softly in background */
-startPetals();
+/* background petals */
+startPetals(700);
 </script>
 
 </body>
